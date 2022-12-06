@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI.MvvmFirst.App.Pages.WelcomePage"
+             xmlns:ViewModels="clr-namespace:MAUI.MvvmFirst.App.ViewModels"
+             x:DataType="{x:Type ViewModels:WelcomeViewModel}"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             Title="WelcomePage">
+
+    <Grid RowDefinitions="*,auto" Padding="16">
+        <CarouselView
+            Grid.Row="0"
+            ItemsSource="{Binding WelcomeTutorialSteps}"
+            IndicatorView="WelcomeTutorialProgressIndicator" 
+            Loop="False">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label Text="{Binding}" />
+                    </Grid>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        <VerticalStackLayout 
+            Grid.Row="1"
+            VerticalOptions="Center">
+            <IndicatorView 
+                x:Name="WelcomeTutorialProgressIndicator"
+                IndicatorColor="LightGray"
+                SelectedIndicatorColor="DarkGray"
+                HorizontalOptions="Center"/>
+            <Button 
+                Text="Skip tutorial"
+                Command="{Binding GoToMainPageCommand}"
+                Margin="8"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
