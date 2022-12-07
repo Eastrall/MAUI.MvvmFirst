@@ -38,6 +38,8 @@ public static class MauiProgram
         MauiApp app = builder.Build();
 
         DependencyContainer.SetServiceProvider(app.Services);
+        ViewModelLocator.Configure<LoginViewModel>(isCached: true);
+        ViewModelLocator.Configure<WelcomeViewModel>(isCached: true);
 
         return app;
     }

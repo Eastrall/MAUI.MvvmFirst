@@ -1,5 +1,4 @@
-﻿using MAUI.MvvmFirst.App.ViewModels;
-using Microsoft.Maui.Controls;
+﻿using Microsoft.Maui.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +24,7 @@ public class NavigationService
     /// <typeparam name="TViewModel">View model type</typeparam>
     /// <typeparam name="TPage">Page type</typeparam>
     public void Register<TViewModel, TPage>()
-        where TViewModel : class, IViewModel
+        where TViewModel : class
         where TPage : Page
     {
         Type viewModelType = typeof(TViewModel);
@@ -46,7 +45,7 @@ public class NavigationService
     /// <param name="viewModel">ViewModel instance.</param>
     /// <returns></returns>
     public async Task PushAsync<TViewModel>(TViewModel viewModel = null)
-        where TViewModel : class, IViewModel
+        where TViewModel : class
     {
         Page page = BuildPage(viewModel);
 
@@ -62,7 +61,12 @@ public class NavigationService
     /// <returns></returns>
     public async Task PopAsync()
     {
-        await Navigation.PopAsync();
+        Page page = await Navigation.PopAsync();
+
+        if (page is not null)
+        {
+            page.BindingContext = null;
+        }
     }
 
     /// <summary>
@@ -74,7 +78,7 @@ public class NavigationService
     /// <param name="viewModel">ViewModel instance.</param>
     /// <returns></returns>
     public async Task GoToAsync<TViewModel>(TViewModel viewModel = null)
-        where TViewModel : class, IViewModel
+        where TViewModel : class
     {
         Page page = BuildPage(viewModel);
 
@@ -103,16 +107,16 @@ public class NavigationService
     }
 
     private Page BuildPage<TViewModel>(TViewModel viewModel = null)
-        where TViewModel : class, IViewModel
+        where TViewModel : class
     {
         Page page = null;
 
-        if (_viewModelPages.TryGetValue(typeof(TViewModel), out Type pageType))
+        if (!_viewModelPages.TryGetValue(typeof(TViewModel), out Type pageType))
         {
             page = Activator.CreateInstance(pageType) as Page;
         }
 
-        page.BindingContext = viewModel is not null ? viewModel : Activator.CreateInstance<TViewModel>();
+        page.BindingContext = viewModel is not null ? viewModel : ViewModelLocator.Get<TViewModel>();
 
         return page;
     }

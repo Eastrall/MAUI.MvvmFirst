@@ -6,33 +6,35 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MAUI.MvvmFirst.App.Pages"
     xmlns:ViewModels="clr-namespace:MAUI.MvvmFirst.App.ViewModels"
-    x:DataType="{x:Type ViewModels:AppShellViewModel}"
+    xmlns:Services="clr-namespace:MAUI.MvvmFirst.App.Services"
     NavigationPage.HasNavigationBar="False"
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
         Title="Login"
+        Route="Login"
         ContentTemplate="{DataTemplate local:LoginPage}"
-        BindingContext="{Binding LoginViewModel}"
-        Route="Login" />
+        Services:ViewModelLocator.ViewModelType="{x:Type ViewModels:LoginViewModel}">
+    </ShellContent>
 
     <ShellContent
+        Route="WelcomeTutorial"
         Title="Welcome Tutorial"
         ContentTemplate="{DataTemplate local:WelcomePage}"
-        BindingContext="{Binding WelcomeViewModel}"
-        Route="WelcomeTutorial" />
+        Services:ViewModelLocator.ViewModelType="{x:Type ViewModels:WelcomeViewModel}" />
 
     <TabBar Route="Main">
         <Tab Route="Home" Title="Home">
             <ShellContent
+                Route="Home"
                 ContentTemplate="{DataTemplate local:HomePage}"
-                BindingContext="{Binding HomeViewModel}"
-                Route="Home" />
+                Services:ViewModelLocator.ViewModelType="{x:Type ViewModels:HomeViewModel}" />
         </Tab>
         <Tab Route="User" Title="User">
             <ShellContent 
+                Route="User"
                 ContentTemplate="{DataTemplate local:UserProfilePage}"
-                BindingContext="{Binding UserProfileViewModel}" />
+                Services:ViewModelLocator.ViewModelType="{x:Type ViewModels:UserProfileViewModel}" />
         </Tab>
     </TabBar>
 

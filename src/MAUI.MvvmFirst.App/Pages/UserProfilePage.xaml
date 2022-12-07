@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:ViewModels="clr-namespace:MAUI.MvvmFirst.App.ViewModels"
              x:DataType="{x:Type ViewModels:UserProfileViewModel}"
              x:Class="MAUI.MvvmFirst.App.Pages.UserProfilePage"
              Shell.NavBarIsVisible="False"
              Title="UserProfilePage">
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior 
+            EventName="Appearing"
+            Command="{Binding AppearingCommand}" />
+        <toolkit:EventToCommandBehavior 
+            EventName="Disappearing"
+            Command="{Binding DisapearingCommand}" />
+    </ContentPage.Behaviors>
+    
     <VerticalStackLayout>
         <Label 
             Text="Welcome"

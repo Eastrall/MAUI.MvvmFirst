@@ -1,5 +1,4 @@
-﻿using MAUI.MvvmFirst.App.ViewModels;
-using Microsoft.Maui.Controls;
+﻿using Microsoft.Maui.Controls;
 
 namespace MAUI.MvvmFirst.App;
 
@@ -9,9 +8,6 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        MainPage = new AppShell
-        {
-            BindingContext = new AppShellViewModel()
-        };
+        MainPage = new AppShell();
     }
 }
