@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using MAUI.MvvmFirst.ViewModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 

@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9AC38477-EA3A-4AD0-AAE1-C4D7488B4DFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAUI.MvvmFirst.App", "src\MAUI.MvvmFirst.App\MAUI.MvvmFirst.App.csproj", "{E5F9B217-F4FD-4A3E-9AFF-F46B44A7DC9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MAUI.MvvmFirst.App", "src\MAUI.MvvmFirst.App\MAUI.MvvmFirst.App.csproj", "{E5F9B217-F4FD-4A3E-9AFF-F46B44A7DC9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAUI.MvvmFirst", "src\MAUI.MvvmFirst\MAUI.MvvmFirst.csproj", "{8AC0BB99-1C3C-4C1C-B391-96CDFFC9AF7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,12 +21,17 @@ Global
 		{E5F9B217-F4FD-4A3E-9AFF-F46B44A7DC9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5F9B217-F4FD-4A3E-9AFF-F46B44A7DC9D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E5F9B217-F4FD-4A3E-9AFF-F46B44A7DC9D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{8AC0BB99-1C3C-4C1C-B391-96CDFFC9AF7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AC0BB99-1C3C-4C1C-B391-96CDFFC9AF7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AC0BB99-1C3C-4C1C-B391-96CDFFC9AF7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AC0BB99-1C3C-4C1C-B391-96CDFFC9AF7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E5F9B217-F4FD-4A3E-9AFF-F46B44A7DC9D} = {9AC38477-EA3A-4AD0-AAE1-C4D7488B4DFD}
+		{8AC0BB99-1C3C-4C1C-B391-96CDFFC9AF7C} = {9AC38477-EA3A-4AD0-AAE1-C4D7488B4DFD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9F411161-31BD-4D8E-8BF0-92266EEB4923}

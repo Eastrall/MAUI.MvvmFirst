@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MAUI.MvvmFirst.App.DependencyInjection;
+namespace MAUI.MvvmFirst.DependencyInjection;
 
 public static class DependencyContainer
 {

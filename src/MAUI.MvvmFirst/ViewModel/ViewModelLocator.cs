@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MAUI.MvvmFirst.App.Services;
+namespace MAUI.MvvmFirst.ViewModel;
 
 /// <summary>
 /// Provides a mechanism to resolve ViewModels.

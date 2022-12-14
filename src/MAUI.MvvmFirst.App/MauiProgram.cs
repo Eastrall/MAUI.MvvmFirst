@@ -1,9 +1,6 @@
 ﻿using CommunityToolkit.Maui;
-using MAUI.MvvmFirst.App.DependencyInjection;
 using MAUI.MvvmFirst.App.Pages;
-using MAUI.MvvmFirst.App.Services;
 using MAUI.MvvmFirst.App.ViewModels;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
 
@@ -17,29 +14,30 @@ public static class MauiProgram
         builder
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
+            .UseMvvmFirst(options =>
+            {
+                options.ConfigureNavigation(builder =>
+                {
+                    builder.Register<LoginViewModel, LoginPage>();
+                    builder.Register<WelcomeViewModel, WelcomePage>();
+                    builder.Register<HomeViewModel, HomePage>();
+                    builder.Register<UserProfileViewModel, UserProfilePage>();
+                });
+                options.ConfigureViewModels(builder =>
+                {
+                    builder.Configure<LoginViewModel>(isCached: true);
+                    builder.Configure<WelcomeViewModel>(isCached: true);
+                });
+            })
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        builder.Services.AddSingleton<NavigationService>(_ =>
-        {
-            var service =  new NavigationService();
-
-            service.Register<LoginViewModel, LoginPage>();
-            service.Register<WelcomeViewModel, WelcomePage>();
-            service.Register<HomeViewModel, HomePage>();
-            service.Register<UserProfileViewModel, UserProfilePage>();
-
-            return service;
-        });
-
         MauiApp app = builder.Build();
 
-        DependencyContainer.SetServiceProvider(app.Services);
-        ViewModelLocator.Configure<LoginViewModel>(isCached: true);
-        ViewModelLocator.Configure<WelcomeViewModel>(isCached: true);
+        app.UseDependencyContainer();
 
         return app;
     }

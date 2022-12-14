@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MAUI.MvvmFirst.ViewModel;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;

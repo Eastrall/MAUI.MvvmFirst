@@ -6,7 +6,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MAUI.MvvmFirst.App.Pages"
     xmlns:ViewModels="clr-namespace:MAUI.MvvmFirst.App.ViewModels"
-    xmlns:Services="clr-namespace:MAUI.MvvmFirst.App.Services"
+    xmlns:MvvmFirst="clr-namespace:MAUI.MvvmFirst.ViewModel;assembly=MAUI.MvvmFirst"
     NavigationPage.HasNavigationBar="False"
     Shell.FlyoutBehavior="Disabled">
 
@@ -14,27 +14,27 @@
         Title="Login"
         Route="Login"
         ContentTemplate="{DataTemplate local:LoginPage}"
-        Services:ViewModelLocator.ViewModelType="{x:Type ViewModels:LoginViewModel}">
+        MvvmFirst:ViewModelLocator.ViewModelType="{x:Type ViewModels:LoginViewModel}">
     </ShellContent>
 
     <ShellContent
         Route="WelcomeTutorial"
         Title="Welcome Tutorial"
         ContentTemplate="{DataTemplate local:WelcomePage}"
-        Services:ViewModelLocator.ViewModelType="{x:Type ViewModels:WelcomeViewModel}" />
+        MvvmFirst:ViewModelLocator.ViewModelType="{x:Type ViewModels:WelcomeViewModel}" />
 
     <TabBar Route="Main">
         <Tab Route="Home" Title="Home">
             <ShellContent
                 Route="Home"
                 ContentTemplate="{DataTemplate local:HomePage}"
-                Services:ViewModelLocator.ViewModelType="{x:Type ViewModels:HomeViewModel}" />
+                MvvmFirst:ViewModelLocator.ViewModelType="{x:Type ViewModels:HomeViewModel}" />
         </Tab>
         <Tab Route="User" Title="User">
             <ShellContent 
                 Route="User"
                 ContentTemplate="{DataTemplate local:UserProfilePage}"
-                Services:ViewModelLocator.ViewModelType="{x:Type ViewModels:UserProfileViewModel}" />
+                MvvmFirst:ViewModelLocator.ViewModelType="{x:Type ViewModels:UserProfileViewModel}" />
         </Tab>
     </TabBar>
 

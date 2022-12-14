@@ -1,15 +1,17 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using MAUI.MvvmFirst.App.DependencyInjection;
-using MAUI.MvvmFirst.App.Services;
+using MAUI.MvvmFirst.Abstractions;
+using MAUI.MvvmFirst.DependencyInjection;
+using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 
-namespace MAUI.MvvmFirst.App.ViewModels;
+namespace MAUI.MvvmFirst.ViewModel;
 
 public partial class ViewModelBase : ObservableObject, INotifyPropertyChanged, INotifyPropertyChanging
 {
-    protected NavigationService Navigation { get; init; } = DependencyContainer.GetService<NavigationService>();
+    protected INavigationService Navigation { get; init; } = DependencyContainer.GetService<INavigationService>() ??
+        throw new InvalidProgramException("Failed to get NavigationService from DependencyContainer.");
 
     [RelayCommand]
     protected virtual Task OnAppearingAsync() => Task.CompletedTask;
